@@ -9,11 +9,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
-module.exports = sequelize;
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: true}).then(() => {
   app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));
 });
+
+module.exports = sequelize;
 
 
