@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
     },
     include: {
       model: Tag,
+      through: ProductTag,
       attributes: ['tag_name']
     }
   })
@@ -26,21 +27,25 @@ router.get('/:id', (req, res) => {
   // find a single product by its `id`
   Product.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
-    include: [{
-      model: Category,
-      attributes: ['category_name']
-    },
-    {
-      model: Tag,
-      attributes: ['tag_name']
-    }]
-  }).then(data => res.json(data))
-    .catch(err => {
+    include: [
+      {
+        model: Category,
+        attributes: ["category_name"],
+      },
+      {
+        model: Tag,
+        through: ProductTag,
+        attributes: ["tag_name"],
+      },
+    ],
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
-    })
+    });
   // be sure to include its associated Category and Tag data
 });
 
@@ -125,7 +130,7 @@ router.delete('/:id', (req, res) => {
       }
       res.json(data)
     })
-    .catch (err => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err)
     })
