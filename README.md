@@ -14,14 +14,12 @@ This project is a backend for an online e-commerce website. I set the relational
 
 ## Installation
 
+https://github.com/dev-dominick/internet-retail-back-end
 Fork/clone repo, save it locally to your machine, install all dependencies, and run app by typing "node server.js" in the integrated terminal.
 
 ## Usage
 
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+https://watch.screencastify.com/v/d1ycPQSZ8VCJxR9gG9LO
 
 ## Credits
 
